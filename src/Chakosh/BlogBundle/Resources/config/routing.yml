@@ -1,0 +1,19 @@
+chakosh_blog_homepage:
+    pattern:  /
+    defaults: { _controller: ChakoshBlogBundle:Book:index }   
+chakoshBlogBundle_Book:
+    resource: "@ChakoshBlogBundle/Resources/config/routing/book.yml"
+    prefix:   /
+chakoshBlogBundle_category:
+    resource: "@ChakoshBlogBundle/Resources/config/routing/category.yml"
+    prefix:   /admin/category
+category_show:
+    pattern:  /category/{category}
+    defaults: { _controller: ChakoshBlogBundle:Category:categoryShow }   
+root:
+    path: /you-must-not-be-here
+    defaults:
+        _controller: FrameworkBundle:Redirect:urlRedirect
+        path: /then-go-here
+        permanent: true
+        

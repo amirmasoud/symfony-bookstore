@@ -1,0 +1,25 @@
+{% extends 'ChakoshHomeBundle:Base:base.html.twig' %}
+{% block style %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/login.css') }}" />
+{% endblock %}
+{% block content %}
+<div id="login">
+    {% if error %}
+        <div class="alert alert-danger">
+            {{ error.message|trans({}, 'Login') }}
+        </div>
+    {% endif %}
+    <form action="{{ path('login_check') }}" method="post" class="form-inline">
+        <input autofocus="autofocus" autocomplete="false" type="text" id="username" name="_username" class="form-control" placeholder="نام کاربری" value="{{ last_username }}" />
+
+        <input tabindex="0" type="password" id="password" name="_password" class="form-control" placeholder="رمزعبور" />
+        <div class="checkbox">
+            <label for="remember_me">منا یادت نره</label>
+            <input type="checkbox" id="remember_me" name="_remember_me" checked="checked" />
+        </div>
+        <br />
+        <button type="submit" name="login" class="btn btn-default">ورود</button>
+    </form>
+</div>    
+{% endblock %}

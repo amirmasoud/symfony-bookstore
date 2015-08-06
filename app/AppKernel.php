@@ -1,0 +1,48 @@
+<?php
+
+use Symfony\Component\HttpKernel\Kernel;
+use Symfony\Component\Config\Loader\LoaderInterface;
+
+class AppKernel extends Kernel
+{
+    public function registerBundles()
+    {
+        $bundles = array(
+            new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
+            new Symfony\Bundle\SecurityBundle\SecurityBundle(),
+            new Symfony\Bundle\TwigBundle\TwigBundle(),
+            new Symfony\Bundle\MonologBundle\MonologBundle(),
+            new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
+            new Symfony\Bundle\AsseticBundle\AsseticBundle(),
+            new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
+            new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
+            new Liip\ImagineBundle\LiipImagineBundle(),
+            new Liip\SearchBundle\LiipSearchBundle(),
+            //new Ornicar\GravatarBundle\OrnicarGravatarBundle(),
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+            new FOS\UserBundle\FOSUserBundle(),
+            new Chakosh\BlogBundle\ChakoshBlogBundle(),
+            new Chakosh\SecurityBundle\ChakoshSecurityBundle(),
+            new Chakosh\HomeBundle\ChakoshHomeBundle(),
+            new Chakosh\UploadBundle\ChakoshUploadBundle(),
+            new Chakosh\CommentBundle\ChakoshCommentBundle(),
+            new Chakosh\SearchBundle\ChakoshSearchBundle(),
+            new Chakosh\OptionsBundle\ChakoshOptionsBundle(),
+            new Chakosh\NewsBundle\ChakoshNewsBundle(),
+            );
+
+        if (in_array($this->getEnvironment(), array('dev', 'test'))) {
+            $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
+            $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
+            $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
+            $bundles[] = new CoreSphere\ConsoleBundle\CoreSphereConsoleBundle();            
+        }
+
+        return $bundles;
+    }
+
+    public function registerContainerConfiguration(LoaderInterface $loader)
+    {
+        $loader->load(__DIR__.'/config/config_'.$this->getEnvironment().'.yml');
+    }
+}

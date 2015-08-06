@@ -1,0 +1,9 @@
+search:
+    pattern:  /search
+    defaults: { _controller: ChakoshSearchBundle:Search:search }
+    requirements:
+      methode: get
+avlTags:
+    pattern:  /avlTags
+    defaults: { _controller: ChakoshSearchBundle:Search:availableTags }
+  

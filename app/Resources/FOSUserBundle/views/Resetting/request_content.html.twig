@@ -1,0 +1,15 @@
+{% trans_default_domain 'FOSUserBundle' %}
+{% block style %}
+  <link href="{{ asset('css/resetting.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% import "FOSUserBundle::errors.html.twig" as e %}
+
+<form action="{{ path('fos_user_resetting_send_email') }}" method="POST" class="form-resetting fos_user_resetting_request">
+    <h2 class="form-signin-resetting" style="text-align:center;">بازیابی کلمه عبور</h2>
+    {% if invalid_username is defined %}
+        {{ e.mess('resetting.request.invalid_username'|trans({'%username%': invalid_username}),'danger') }}</p>
+    {% endif %}    
+    <input type="text" id="username" name="username" required="required" class="form-control" placeholder="{{ 'resetting.request.username'|trans }}" />
+    <button type="submit" class="btn btn-lg btn-primary btn-block">{{ 'resetting.request.submit'|trans }}</button>
+</form>

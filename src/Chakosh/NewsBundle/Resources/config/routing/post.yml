@@ -1,0 +1,30 @@
+blog:
+    pattern:  /
+    defaults: { _controller: "ChakoshNewsBundle:Post:index" }
+
+blog_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "ChakoshNewsBundle:Post:show" }
+
+blog_new:
+    pattern:  /new
+    defaults: { _controller: "ChakoshNewsBundle:Post:new" }
+
+blog_create:
+    pattern:  /create
+    defaults: { _controller: "ChakoshNewsBundle:Post:create" }
+    requirements: { _method: post }
+
+blog_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "ChakoshNewsBundle:Post:edit" }
+
+blog_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "ChakoshNewsBundle:Post:update" }
+    requirements: { _method: post|put }
+
+blog_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "ChakoshNewsBundle:Post:delete" }
+    requirements: { _method: post|delete }

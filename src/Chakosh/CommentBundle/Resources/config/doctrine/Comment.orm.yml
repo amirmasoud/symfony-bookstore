@@ -1,0 +1,28 @@
+Chakosh\CommentBundle\Entity\Comment:
+    type: entity
+    table: null
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        author:
+            type: string
+            length: 255
+        email:
+            type: string
+            length: 255
+        date:
+            type: datetime
+        content:
+            type: text
+        ip:
+            type: string
+            length: 255
+        approved:
+            type: boolean
+        postId:
+            type: integer
+            column: post_id
+    lifecycleCallbacks: {  }

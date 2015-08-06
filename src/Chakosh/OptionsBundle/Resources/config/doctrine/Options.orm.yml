@@ -1,0 +1,18 @@
+Chakosh\OptionsBundle\Entity\Options:
+    type: entity
+    table: null
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        optionName:
+            type: string
+            length: 255
+            column: option_name
+        optionValue:
+            type: string
+            length: 255
+            column: option_value
+    lifecycleCallbacks: {  }

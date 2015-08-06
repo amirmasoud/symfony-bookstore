@@ -1,0 +1,14 @@
+chakosh_upload_homepage:
+    pattern:  /admin/upload
+    defaults: { _controller: ChakoshUploadBundle:Upload:upload }
+upload:
+    path: /admin/uploading
+    defaults: { _controller: ChakoshUploadBundle:Upload:upload }
+    requirements:
+        _method:  POST    
+show_files:    
+    path: /admin/media
+    defaults: { _controller: ChakoshUploadBundle:Upload:show }
+ajax_show_modal:
+    pattern: /admin/ajax/modal
+    defaults: { _controller: ChakoshUploadBundle:Upload:modalShow }    

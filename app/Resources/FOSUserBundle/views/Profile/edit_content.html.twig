@@ -1,0 +1,20 @@
+{% trans_default_domain 'FOSUserBundle' %}
+{% import "FOSUserBundle::errors.html.twig" as e %}
+{% block style %}
+  <link href="{{ asset('css/edit_profile.css') }}" rel="stylesheet">
+{% endblock %}
+<form action="{{ path('fos_user_profile_edit') }}" {{ form_enctype(form) }} method="POST" class="form-edit fos_user_profile_edit">
+	<h2 class="form-signin-heading" style="text-align:center;">ویرایش اطلاعات</h2>
+    {{ form_widget(form.username, { 'attr': {'class':'form-control','dir':'auto','placeholder':'نام کاربری'} }) }}	    
+    {{ e.mess(form_errors(form.username),'warning') }}
+
+    {{ form_widget(form.email, { 'attr': {'class':'form-control','dir':'auto','placeholder':"ایمیل"} }) }}
+	{{ e.mess(form_errors(form.email),'warning') }}    
+
+    {{ form_widget(form.current_password, { 'attr': {'class':'form-control','dir':'auto','placeholder':'گذرواژه'} }) }}
+	{{ e.mess(form_errors(form.current_password),'warning') }}
+
+    {{ form_rest(form) }}
+
+	<button class="btn btn-lg btn-primary btn-block" type="submit">{{ 'profile.edit.submit'|trans }}</button>
+</form>

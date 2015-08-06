@@ -1,0 +1,36 @@
+Chakosh\BlogBundle\Entity\Book:
+    type: entity
+    repositoryClass: Chakosh\BlogBundle\Entity\BookRepository
+    table: null
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        name:
+            type: string
+            length: 255
+        link:
+            type: string
+            length: 255            
+        author:
+            type: string
+            length: 255
+        cover:
+            type: string
+            length: 255
+            nullable: true
+        file:
+            type: string
+            length: 255            
+        content:
+            type: text
+        commentNum:
+            type: integer
+            column: comment_num
+    manyToMany:
+      categories:
+        targetEntity: Category
+        mappedBy: books
+    lifecycleCallbacks: {  }

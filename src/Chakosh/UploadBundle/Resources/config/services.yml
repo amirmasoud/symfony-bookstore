@@ -1,0 +1,7 @@
+parameters:
+#    chakosh_upload.example.class: Chakosh\UploadBundle\Example
+
+services:
+#    chakosh_upload.example:
+#        class: %chakosh_upload.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

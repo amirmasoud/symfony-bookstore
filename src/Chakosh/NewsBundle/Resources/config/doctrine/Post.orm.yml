@@ -1,0 +1,47 @@
+Chakosh\NewsBundle\Entity\Post:
+    type: entity
+    table: null
+    repositoryClass: Chakosh\NewsBundle\Entity\PostRepository
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        author:
+            type: string
+            length: 255
+        date:
+            type: datetime
+        content:
+            type: text
+        title:
+            type: string
+            length: 255
+        excerpt:
+            type: text
+            nullable: true
+        status:
+            type: string
+            length: 255
+        commentStatus:
+            type: string
+            length: 255
+            column: comment_status
+        password:
+            type: string
+            length: 255
+            nullable: true
+        modified:
+            type: datetime
+        type:
+            type: string
+            length: 255
+    manyToMany:
+      postCategory:
+        targetEntity: postCategory
+        mappedBy: posts
+      tag:
+        targetEntity: Tag
+        mappedBy: posts
+    lifecycleCallbacks: {  }

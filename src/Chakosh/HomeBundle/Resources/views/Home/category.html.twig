@@ -1,0 +1,20 @@
+{% extends 'ChakoshHomeBundle:Base:index.html.twig' %}
+{% block content %}
+{% for book in entities %}
+    <article id="book">
+        <figure>
+            {# {{ [ asset('uploads/cover/'),{% block book_cover %}{% endblock %} ] | join() }} #}
+            <img src="{{ [ asset('uploads/documents/'),book.cover ] | join() }}" />
+        </figure>
+
+        <figcaption>
+            <div id="comments_num" title="{% if book.commentNum %}{{ book.commentNum }} دیدگاه{% else %}بدون دیدگاه{% endif %}"><h3>{{ book.commentNum }}</h3></div>
+            <a href="{{ path('_show', {'id': book.link}) }}"><h1>{{ book.name }}</h1></a>
+            <h3>{{ book.author }}</h3>
+            <a href="{{ [ 'uploads/documents/',book.file ] | join()  | imagine_filter('my_thumb') }}"><button type="button" class="btn btn-info">دریافت</button></a>
+        </figcaption>                
+    </article>
+{% endfor %}
+<div id="clr"></div>
+{{ knp_pagination_render(entities) }}
+{% endblock %}    

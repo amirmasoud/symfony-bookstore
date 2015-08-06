@@ -1,0 +1,13 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block style %}
+  <link href="{{ asset('css/resetting.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% import "FOSUserBundle::errors.html.twig" as e %}
+
+<form action="{{ path('fos_user_resetting_reset', {'token': token}) }}" {{ form_enctype(form) }} method="POST" class="form-resetting fos_user_resetting_reset">
+	<h2 class="form-signin-resetting" style="text-align:center;">بازیابی کلمه عبور</h2>
+    {{ form_widget(form.email, { 'attr': {'class':'form-control','dir':'auto','placeholder':'نام کاربری'} }) }}	    
+    {{ e.mess(form_errors(form.email),'warning') }}
+</form>

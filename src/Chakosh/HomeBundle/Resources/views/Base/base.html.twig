@@ -1,0 +1,47 @@
+<!doctype HTML>
+<head>
+    {% block meta %}
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- complete meta tags -->
+    {% endblock %}   
+    <!-- complete meta tags -->
+    <!--[if lt IE 9]>
+        <script src="{{ asset('js/html5.js') }}"></script>
+    <![endif]-->        
+    {% block style %}
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.css') }}" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}" />
+    {% endblock %}
+    {% block js %}
+        <script src="{{ asset('js/jquery.js') }}"></script>
+        <script src="{{ asset('js/scripts.js') }}"></script>
+        <script src="{{ asset('js/bootstrap.js') }}"></script>
+        <script src="{{ asset('js/modernizr.js') }}"></script>        
+        
+    {% endblock %}
+    <title>{% block title %}chakosh{% endblock %}</title>  
+</head>
+<body>
+    <div id="header_container">
+        <a href="{{ path('chakosh_blog_homepage') }}">
+            <div id="header">
+                <div id="logo"></div>
+            </div>
+        </a>
+    </div>
+        
+    <div id="container">        
+        <div id="content">
+            {% block content %}{% endblock %}
+            <div id="clr"></div>
+        </div>
+    </div>
+    
+    
+    <div id="footer">
+        <div id="footer_container">
+            <p>&copy; تمام حقوق محفوظ است</p>
+        </div>
+    </div>
+</body>

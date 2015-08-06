@@ -1,0 +1,30 @@
+category:
+    pattern:  /
+    defaults: { _controller: "ChakoshBlogBundle:Category:index" }
+
+category_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "ChakoshBlogBundle:Category:show" }
+
+category_new:
+    pattern:  /admin/new
+    defaults: { _controller: "ChakoshBlogBundle:Category:new" }
+
+category_create:
+    pattern:  /admin/create
+    defaults: { _controller: "ChakoshBlogBundle:Category:create" }
+    requirements: { _method: post }
+
+category_edit:
+    pattern:  /admin/{id}/edit
+    defaults: { _controller: "ChakoshBlogBundle:Category:edit" }
+
+category_update:
+    pattern:  /admin/{id}/update
+    defaults: { _controller: "ChakoshBlogBundle:Category:update" }
+    requirements: { _method: post|put }
+
+category_delete:
+    pattern:  /admin/{id}/delete
+    defaults: { _controller: "ChakoshBlogBundle:Category:delete" }
+    requirements: { _method: post|delete }

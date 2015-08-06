@@ -1,0 +1,42 @@
+    $("button#insert-img-to-post").click(function(){
+        value = $(this).attr('data-name');
+        type = $(this).attr('data-type').toLowerCase();
+        if(type === 'jpg' || type === 'png' || type === 'gif')
+            $("#editor").append('<img src="'+value+'" />'); 
+        else if(type === 'mp3' || type === 'omg' || type === 'wmv')
+            $("#editor").append('<audio controls><source src="'+ value +'" type="audio/' + type + '">Your browser does not support the audio element.</audio>');
+        else if(type === 'flv' || type === 'wmv' || type === 'mp4')
+            $("#editor").append('<video controls><source src="'+ value +'" type="video/' + type + '">Your browser does not support the video element.</video>');                    
+        //alert(value);
+        $('#myModal').modal('hide');
+    });            
+    $("#chakosh_blogbundle_booktype_file").click(function(){
+        $(this).toggleClass('active');
+    })
+    
+    $("#select-cover").click(function(){
+        console.log("I'm Here:)");
+        value = $(this).attr('data-name');
+        file = $(this).attr('data-file');
+        
+        alert(value);
+    });
+    
+    $("#ava_files tr td button").click(function(){
+        value = $(this).attr('data-name');
+        file = $(this).attr('data-file');
+        
+        $("#chakosh_blogbundle_booktype_cover").val(value);
+        
+        if($("#chakosh_blogbundle_booktype_file").hasClass('active'))
+            {
+            $("#chakosh_blogbundle_booktype_file").val(value);
+            $("#chakosh_blogbundle_booktype_file").toggleClass('active');
+            }
+        if($("#chakosh_blogbundle_booktype_cover").hasClass('active'))
+            {
+            $("#chakosh_blogbundle_booktype_cover").val(value);
+            $("#chakosh_blogbundle_booktype_cover").toggleClass('active');
+            }
+        $('#myModal').modal('hide')
+    })

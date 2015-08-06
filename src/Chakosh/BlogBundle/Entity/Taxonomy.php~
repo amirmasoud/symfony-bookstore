@@ -1,0 +1,195 @@
+<?php
+
+namespace Chakosh\BlogBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Taxonomy
+ */
+class Taxonomy
+{
+    /**
+     * @var integer
+     */
+    private $id;
+
+    /**
+     * @var integer
+     */
+    private $postId;
+
+    /**
+     * @var integer
+     */
+    private $taxonomyId;
+
+    /**
+     * @var string
+     */
+    private $taxonomy;
+
+    /**
+     * @var string
+     */
+    private $description;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set postId
+     *
+     * @param integer $postId
+     * @return Taxonomy
+     */
+    public function setPostId($postId)
+    {
+        $this->postId = $postId;
+    
+        return $this;
+    }
+
+    /**
+     * Get postId
+     *
+     * @return integer 
+     */
+    public function getPostId()
+    {
+        return $this->postId;
+    }
+
+    /**
+     * Set taxonomyId
+     *
+     * @param integer $taxonomyId
+     * @return Taxonomy
+     */
+    public function setTaxonomyId($taxonomyId)
+    {
+        $this->taxonomyId = $taxonomyId;
+    
+        return $this;
+    }
+
+    /**
+     * Get taxonomyId
+     *
+     * @return integer 
+     */
+    public function getTaxonomyId()
+    {
+        return $this->taxonomyId;
+    }
+
+    /**
+     * Set taxonomy
+     *
+     * @param string $taxonomy
+     * @return Taxonomy
+     */
+    public function setTaxonomy($taxonomy)
+    {
+        $this->taxonomy = $taxonomy;
+    
+        return $this;
+    }
+
+    /**
+     * Get taxonomy
+     *
+     * @return string 
+     */
+    public function getTaxonomy()
+    {
+        return $this->taxonomy;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return Taxonomy
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string 
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+    /**
+     * @var integer
+     */
+    private $bookId;
+
+    /**
+     * @var integer
+     */
+    private $categoryId;
+
+
+    /**
+     * Set bookId
+     *
+     * @param integer $bookId
+     * @return Taxonomy
+     */
+    public function setBookId($bookId)
+    {
+        $this->bookId = $bookId;
+    
+        return $this;
+    }
+
+    /**
+     * Get bookId
+     *
+     * @return integer 
+     */
+    public function getBookId()
+    {
+        return $this->bookId;
+    }
+
+    /**
+     * Set categoryId
+     *
+     * @param integer $categoryId
+     * @return Taxonomy
+     */
+    public function setCategoryId($categoryId)
+    {
+        $this->categoryId = $categoryId;
+    
+        return $this;
+    }
+
+    /**
+     * Get categoryId
+     *
+     * @return integer 
+     */
+    public function getCategoryId()
+    {
+        return $this->categoryId;
+    }
+}

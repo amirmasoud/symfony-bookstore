@@ -1,0 +1,44 @@
+<table class="table table-striped" id="ava_files">
+{% for file in files %}
+    {% set f = file|split(".") %}
+    <tr>
+        <td>
+            {% if (f[1] == "jpg") or (f[1] == "png") or (f[1] == "gif") %}
+            <a class="image-popup-no-margins" id="admin_new_image_a" href="{{ ['uploads/',file ] | join() }}">                        
+                <img id="admin_new_image" src="{{ ['uploads/',file ] | join() | imagine_filter('small') }}" data-href="{{ ['uploads/',file ] | join() }}" />
+                <div id="admin_new_image_caption"><span class="glyphicon glyphglyphicon glyphicon-zoom-in"></span></div>
+            </a>
+            {% elseif (f[1] == "mp3") or (f[1] == "omg") or (f[1] == "wmv") %}
+            <audio controls>
+              <source src="{{ ['../../../../uploads/',file ] | join() }}" type="audio/{{ f[1] }}">
+                Your browser does not support the audio element.
+            </audio>
+            {% elseif (f[1] == "FLV") or (f[1] == "MP4") or (f[1] == "WMV") %}
+            <video width="100" controls>
+              <source src="{{ ['../../../../uploads/',file ] | join() }}" type="video/{{ f[1] }}">
+                Your browser does not support the video tag.
+            </video>         
+            {% endif %}
+            <table>
+                <tr>
+                    <td>
+                        <span>{{ f[0] }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>{{ f[1] }}</span>
+                    </td>
+                </tr>
+            </table>
+            <button id="cover" data-name="{{ file }}" data-file="{{ asset(['uploads/',file ] | join()) }}" class="btn btn-success"  onclick="cover(this)">انتخاب</button>
+            <button id="insert-img-to-post" data-type="{{f[1]}}" data-name="{{ asset(['uploads/',file ] | join()) }}" class="btn btn-success" onclick="inserIntoPost(this)">قرار دادن در نوشته</button>
+            <script type="text/javascript">
+
+            </script>
+        </td>
+    </tr>
+{% else %}
+    <p>هنوز فایلی آپلود نشده</p>
+{% endfor %}  
+</table>          

@@ -1,0 +1,30 @@
+admin_setting_:
+    pattern:  /
+    defaults: { _controller: "ChakoshOptionsBundle:Options:index" }
+
+admin_setting__show:
+    pattern:  /{id}/show
+    defaults: { _controller: "ChakoshOptionsBundle:Options:show" }
+
+admin_setting__new:
+    pattern:  /new
+    defaults: { _controller: "ChakoshOptionsBundle:Options:new" }
+
+admin_setting__create:
+    pattern:  /create
+    defaults: { _controller: "ChakoshOptionsBundle:Options:create" }
+    requirements: { _method: post }
+
+admin_setting__edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "ChakoshOptionsBundle:Options:edit" }
+
+admin_setting__update:
+    pattern:  /{id}/update
+    defaults: { _controller: "ChakoshOptionsBundle:Options:update" }
+    requirements: { _method: post|put }
+
+admin_setting__delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "ChakoshOptionsBundle:Options:delete" }
+    requirements: { _method: post|delete }

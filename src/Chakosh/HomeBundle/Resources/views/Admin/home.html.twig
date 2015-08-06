@@ -1,0 +1,36 @@
+{% extends 'ChakoshHomeBundle:Admin:base.html.twig' %}
+{% block content %}
+<section class="row">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-3"></div>
+    <div class="col-md-3"></div>
+    <div class="col-md-3">
+        <a href="{{ path('admin_new') }}"><button type="button" class="btn btn-primary"><span class="fa-plus"></span> جدید</button></a>
+    </div>
+</section>
+<section>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>کاور</th>
+                <th>دیدگاه</th>
+                <th>نام</th>
+                <th>نویسنده</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for book in entities %}
+        {% set cover = book.cover|split('/')|last %}
+            <tr>
+                <td><img src="{{ [ 'uploads/',cover ] | join() | imagine_filter('small',true) }}" /></td>
+                <td>{% if book.commentNum %}{{ book.commentNum }} دیدگاه{% else %}بدون دیدگاه{% endif %}</td>
+                <td><a href="{{ path('admin_edit',{'id':book.id}) }}">{{ book.name }}</a></td>
+                <td>{{ book.author }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</section>
+{{ knp_pagination_render(entities) }}
+{% endblock %}    

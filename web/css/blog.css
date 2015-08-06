@@ -1,0 +1,42 @@
+/* 
+    Document   : blog
+    Created on : Sep 24, 2013, 2:57:37 PM
+    Author     : amirmasoud
+    Description:
+        Purpose of the stylesheet follows.
+*/
+body
+{
+    /*background: url('../images/bg1.jpg');*/
+}
+#searchform button[type="submit"]
+{
+    display: none;
+}   
+#blog
+{
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 0 20px 5px #2b2b2b;
+    margin: 52px auto 0 auto;
+}
+#blog figure,#blog header
+{
+    background: #fff;
+    color: #383838;
+    text-shadow: 1px 1px 1px #ccc;
+}
+@media screen and (min-width: 769px){
+    #blog{
+        max-width: 1168px;
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 768px){
+ 
+}
+
+@media screen and (max-width: 400px){
+ 
+}

@@ -1,0 +1,141 @@
+{% extends 'ChakoshHomeBundle:Admin:base.html.twig' %}
+{% block js %}
+{{ parent() }}
+<script src="{{ asset('js/jquery.imagesloaded.js') }}"></script>
+<script src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+
+	$('.image-popup-vertical-fit').magnificPopup({
+		type: 'image',
+		closeOnContentClick: true,
+		mainClass: 'mfp-img-mobile',
+		image: {
+			verticalFit: true
+		}
+		
+	});
+
+	$('.image-popup-fit-width').magnificPopup({
+		type: 'image',
+		closeOnContentClick: true,
+		image: {
+			verticalFit: false
+		}
+	});
+
+	$('.image-popup-no-margins').magnificPopup({
+		type: 'image',
+		closeOnContentClick: true,
+		closeBtnInside: false,
+		fixedContentPos: true,
+		mainClass: 'mfp-no-margins mfp-with-zoom', // class to remove default margin from left and right side
+		image: {
+			verticalFit: true
+		},
+		zoom: {
+			enabled: true,
+			duration: 300 // don't foget to change the duration also in CSS
+		}
+	});
+    });
+</script>
+{% endblock %}
+{% block style %}
+{{ parent() }}
+<link rel="stylesheet" type="text/css" href="{{ asset('css/magnific-popup.css') }}" />
+<style>
+
+
+</style>
+{% endblock %}
+{% block content %}
+    <li>
+        <a href="{{ path('chakosh_upload_homepage') }}">Upload</a>
+    </li>    
+    
+      <ul id="myTab" class="nav nav-tabs">
+        <li class=""><a href="#all" data-toggle="tab">all</a></li>
+        <li class="active"><a href="#images" data-toggle="tab">images</a></li>
+        <li class=""><a href="#audios" data-toggle="tab">audios</a></li>
+        <li class=""><a href="#videos" data-toggle="tab">videos</a></li>
+      </ul>
+    
+      <div id="myTab" class="tab-content">
+        <div class="tab-pane" id="all">
+	{% for file in files %}
+            <a class="image-popup-no-margins" href="{{ ['../uploads/',file ] | join() }}">
+                <img src="{{ [ 'uploads/',file ] | join() | imagine_filter('small') }}"/>
+            </a>
+	{% endfor %}
+        </div>
+        <div class="tab-pane active" id="images">
+          <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+        </div>
+        <div class="tab-pane" id="audios">
+          <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+        </div>
+        <div class="tab-pane" id="videos">
+          <!--for videos-->          
+          <table class="table table-striped" id="ava_files">
+            {% for file in files %}
+                {% set f = file|split(".") %}
+                        {% if (f[1] == "flv") or (f[1] == "mp4") or (f[1] == "wmv") %}
+                        <tr>
+                            <td>                        
+                                {{ [ asset('uploads/'),file ] | join }}
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <span>{{ f[0] }}</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <span>{{ f[1] }}</span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>                        
+                        {% endif %}
+            {% else %}
+                <p>هنوز فایلی آپلود نشده</p>
+            {% endfor %}            
+        </table>
+
+
+        </div>          
+      </div>
+    
+            <div id="myCarousel" class="carousel slide">
+              <ol class="carousel-indicators">
+                {% for file in files %}
+                    {% set f = file|split(".") %}
+                    {% if (f[1] == "flv") or (f[1] == "mp4") or (f[1] == "wmv") %}
+                        <li data-target="#myCarousel" data-slide-to="{{ loop.index0 }}" class=""></li>
+                    {%endif%}
+                {% endfor %}
+              </ol>
+              {% for file in files %}
+                {% set f = file|split(".") %}
+                {% if (f[1] == "flv") or (f[1] == "mp4") or (f[1] == "wmv") %}              
+                <div class="carousel-inner">
+                  <div class="item">
+                    <video width="100" controls>
+                      <source src="{{ [ asset('uploads/'),file ] | join | lower  }}" type="video/{{ f[1] }}">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="carousel-caption">
+                      <h4>{{ f[0] }}</h4>
+                    </div>
+                  </div>
+                </div>
+                {%endif%}
+              {% endfor %}
+                
+              <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
+              <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
+            </div>          
+    
+{% endblock %}

@@ -1,0 +1,26 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block style %}
+  <link href="{{ asset('css/signup.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% import "FOSUserBundle::errors.html.twig" as e %}
+
+<form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="form-signup fos_user_registration_register">
+	<h2 class="form-signin-heading" style="text-align:center;">ثبت نام</h2>
+    {{ form_widget(form.username, { 'attr': {'class':'form-control','dir':'auto','placeholder':'نام کاربری'} }) }}	    
+    {{ e.mess(form_errors(form.username),'warning') }}
+
+    {{ form_widget(form.email, { 'attr': {'class':'form-control','dir':'auto','placeholder':"ایمیل"} }) }}
+	{{ e.mess(form_errors(form.email),'warning') }}    
+
+    {{ form_widget(form.plainPassword.first, { 'attr': {'class':'form-control','dir':'auto','placeholder':'گذرواژه'} }) }}
+	{{ e.mess(form_errors(form.plainPassword.first),'warning') }}
+
+    {{ form_widget(form.plainPassword.second, { 'attr': {'class':'form-control','dir':'auto','placeholder':'تکرار گذرواژه'} }) }}
+    {{ e.mess(form_errors(form.plainPassword.second),'warning') }}
+
+    {{ form_rest(form) }}
+
+	<button class="btn btn-lg btn-primary btn-block" type="submit">{{ 'registration.submit'|trans }}</button>
+</form>

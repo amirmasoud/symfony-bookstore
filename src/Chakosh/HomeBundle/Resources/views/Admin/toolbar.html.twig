@@ -1,0 +1,112 @@
+{%block style%}
+<style>
+#editor {
+    max-height: 250px;
+    height: 250px;
+    background-color: white;
+    border-collapse: separate; 
+    border: 1px solid rgb(204, 204, 204); 
+    padding: 15px; 
+    box-sizing: content-box; 
+    -webkit-box-shadow: rgba(0, 0, 0, 0.0745098) 0px 1px 1px 0px inset; 
+    box-shadow: rgba(0, 0, 0, 0.0745098) 0px 1px 1px 0px inset;
+    border-top-right-radius: 3px; border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px; border-top-left-radius: 3px;
+    overflow: scroll;
+    outline: none
+}
+#voiceBtn {
+    width: 20px;
+    color: transparent;
+    background-color: transparent;
+    transform: scale(2.0, 2.0);
+    -webkit-transform: scale(2.0, 2.0);
+    -moz-transform: scale(2.0, 2.0);
+    border: transparent;
+    cursor: pointer;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+}
+
+div[data-role="editor-toolbar"] {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.dropdown-menu a {
+    cursor: pointer;
+}
+    
+
+.btn-toolbar
+{
+    height: auto;
+    background: #fff;
+    border-radius: 3px 3px 0 0;
+    padding: 5px;
+    border: 1px solid #f6f6f6;
+}
+.btn-toolbar a{
+    color: #000;
+}
+
+.btn-toolbar .btn-group{
+    border: 1px solid #f6f6f6;
+    border-radius: 4px;
+}
+
+.dropdown-menu #url:focus
+{
+    display: block !important;
+}
+</style>
+{%endblock%}
+<div class="btn-toolbar" data-role="editor-toolbar" data-target="#editor">
+<div class="btn-group">
+  <a class="btn dropdown-toggle" data-toggle="dropdown" title="" data-original-title="قلم"><i class="glyphicon glyphicon-font"></i><b class="caret"></b></a>
+    <ul class="dropdown-menu">
+    <li><a data-edit="fontName B Yekan" style="font-family:'B Yekan'">B Yekan</a></li><li><a data-edit="fontName Serif" style="font-family:'Serif'">Serif</a></li><li><a data-edit="fontName Sans" style="font-family:'Sans'">Sans</a></li><li><a data-edit="fontName Arial" style="font-family:'Arial'">Arial</a></li><li><a data-edit="fontName Arial Black" style="font-family:'Arial Black'">Arial Black</a></li><li><a data-edit="fontName Courier" style="font-family:'Courier'">Courier</a></li><li><a data-edit="fontName Courier New" style="font-family:'Courier New'">Courier New</a></li><li><a data-edit="fontName Comic Sans MS" style="font-family:'Comic Sans MS'">Comic Sans MS</a></li><li><a data-edit="fontName Helvetica" style="font-family:'Helvetica'">Helvetica</a></li><li><a data-edit="fontName Impact" style="font-family:'Impact'">Impact</a></li><li><a data-edit="fontName Lucida Grande" style="font-family:'Lucida Grande'">Lucida Grande</a></li><li><a data-edit="fontName Lucida Sans" style="font-family:'Lucida Sans'">Lucida Sans</a></li><li><a data-edit="fontName Tahoma" style="font-family:'Tahoma'">Tahoma</a></li><li><a data-edit="fontName Times" style="font-family:'Times'">Times</a></li><li><a data-edit="fontName Times New Roman" style="font-family:'Times New Roman'">Times New Roman</a></li><li><a data-edit="fontName Verdana" style="font-family:'Verdana'">Verdana</a></li></ul>
+  </div>
+<div class="btn-group">
+  <a class="btn dropdown-toggle" data-toggle="dropdown" title="" data-original-title="اندازه قلم"><i class="glyphicon glyphglyphicon glyphicon-text-height"></i>&nbsp;<b class="caret"></b></a>
+    <ul class="dropdown-menu">
+    <li><a data-edit="fontSize 5"><font size="5">بزرگ</font></a></li>
+    <li><a data-edit="fontSize 3"><font size="3">نرمال</font></a></li>
+    <li><a data-edit="fontSize 1"><font size="1">کوچک</font></a></li>
+    </ul>
+</div>
+<div class="btn-group">
+  <a class="btn" data-edit="bold" title="" data-original-title="درشت (Ctrl/Cmd+B)"><i class="glyphicon glyphicon-bold"></i></a>
+  <a class="btn" data-edit="italic" title="" data-original-title="مورب (Ctrl/Cmd+I)"><i class="glyphicon glyphicon-italic"></i></a>
+  <a class="btn" data-edit="underline" title="" data-original-title="زیرخط (Ctrl/Cmd+U)"><i class="glyphicon glyphicon-usd"></i></a>
+</div>
+<div class="btn-group">
+  <a class="btn" data-edit="insertunorderedlist" title="" data-original-title="لیست نقطه ای"><i class="glyphicon glyphicon-list"></i></a>
+  <a class="btn" data-edit="insertorderedlist" title="" data-original-title="لیست عددی"><i class="glyphicon glyphicon-list"></i></a>
+  <a class="btn" data-edit="outdent" title="" data-original-title="کاهش فاصله (Shift+Tab)"><i class="glyphicon glyphicon-indent-left"></i></a>
+  <a class="btn" data-edit="indent" title="" data-original-title="فاصله (تب)"><i class="glyphicon glyphicon-indent-right"></i></a>
+</div>
+<div class="btn-group">
+  <a class="btn btn-info" data-edit="justifyleft" title="" data-original-title="چپ چین (Ctrl/Cmd+L)"><i class="glyphicon glyphicon-align-left"></i></a>
+  <a class="btn" data-edit="justifycenter" title="" data-original-title="وسط چین (Ctrl/Cmd+E)"><i class="glyphicon glyphicon-align-center"></i></a>
+  <a class="btn" data-edit="justifyright" title="" data-original-title="راست چین (Ctrl/Cmd+R)"><i class="glyphicon glyphicon-align-right"></i></a>
+  <a class="btn" data-edit="justifyfull" title="" data-original-title="از دو طرف (Ctrl/Cmd+J)"><i class="glyphicon glyphicon-align-justify"></i></a>
+</div>
+<div class="btn-group">
+    <a class="btn" data-toggle="dropdown" title="" data-original-title="لینک"><i class="glyphicon glyphicon-link"></i></a>
+    <div class="dropdown-menu input-append">
+        <input id="url" placeholder="URL" type="text" data-edit="createLink">
+        <button class="btn" type="button">افزودن</button>
+    </div>
+</div>
+
+<div class="btn-group">
+  <a class="btn" title="" id="pictureBtn" data-original-title="گذاشتن تصویر"><i class="glyphicon glyphicon-picture"></i></a>
+</div>
+<div class="btn-group">
+  <a class="btn" data-edit="undo" title="" data-original-title="به عقب (Ctrl/Cmd+Z)"><i class="glyphicon glyphicon-repeat"></i></a>
+  <a class="btn" data-edit="redo" title="" data-original-title="به جلو (Ctrl/Cmd+Y)"><i class="glyphicon glyphicon-repeat"></i></a>
+</div>
+</div>

@@ -1,0 +1,34 @@
+html{
+	direction: rtl;
+}
+header.navbar{
+    background-color: #E1E1E1;
+}
+
+#container {
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+/******** New Post ***********/
+#newPost.row input[type="text"] {
+	margin-bottom: 10px;
+}
+#chakosh_blogbundle_booktype_categories{
+	margin-bottom: 10px;
+}
+#file_dropbox{
+    margin-top: 15px;
+}
+#chakosh_blogbundle_booktype_file{
+    margin-top: 10px;
+}
+#chakosh_blogbundle_booktype_content{
+	display: none;
+}
+#book-category{
+    margin-top: 87px;
+}
+#publish-post{
+    margin-bottom: 10px;
+}

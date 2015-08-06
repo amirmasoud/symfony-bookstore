@@ -1,0 +1,49 @@
+#login
+{
+    width: 600px;
+    margin: 0 auto;
+    background: #FFFFFF;
+    color: #000;
+    direction: ltr;
+    padding: 20px;
+}
+#login input[type="text"],#login input[type="password"]
+{
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    font-weight: bold;
+}
+#login input[type="text"]:hover,#login input[type="password"]:hover,
+#login input[type="text"]:focus,#login input[type="password"]:focus
+{
+}
+#login .checkbox
+{
+    margin-top: 10px;
+    float: right;
+}
+#login button
+{
+    margin-top: 10px;
+}
+
+#no-result
+{
+    background: #fff;
+    color: #EB3D3D;
+    text-shadow: 0 2px 3px #eee;
+    text-align: center;
+    padding: 70px;
+    border-radius: 20px;
+}
+#no-result form
+{
+    margin-top: 20px;
+}
+
+#footer
+{
+
+        
+}

@@ -1,0 +1,5 @@
+{% macro mess(mess,type) %}
+	{% if mess is not empty %}
+	<div class="alert alert-{{type|default('info')}}">{{mess|raw}}</div>
+	{% endif %}
+{% endmacro %}

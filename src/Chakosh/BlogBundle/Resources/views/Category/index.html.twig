@@ -1,0 +1,44 @@
+{% extends 'ChakoshHomeBundle:Admin:base.html.twig' %}
+
+{% block content %}
+    <h1>Category list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Relationship</th>
+                <th>Type</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                
+                <td>{{ entity.name }}</td>
+                <td>{{ entity.relationship }}</td>
+                <td>{{ entity.type }}</td>
+                <td>
+                <ul>
+                    <li>
+                    </li>
+                    <li>
+                        <a href="{{ path('category_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('category_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

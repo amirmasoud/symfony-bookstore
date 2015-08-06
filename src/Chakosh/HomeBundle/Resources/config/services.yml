@@ -1,0 +1,7 @@
+parameters:
+#    chakosh_home.example.class: Chakosh\HomeBundle\Example
+
+services:
+#    chakosh_home.example:
+#        class: %chakosh_home.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

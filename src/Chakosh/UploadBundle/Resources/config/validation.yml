@@ -1,0 +1,5 @@
+Chakosh\UploadBundle\Entity\Upload:
+    properties:
+        file:
+            - Image:
+                maxSize: 1024k

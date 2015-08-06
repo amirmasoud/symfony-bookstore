@@ -1,0 +1,158 @@
+{% extends 'ChakoshHomeBundle:Admin:base.html.twig' %}
+{% block style %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/magnific-popup.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/prism.css') }}" />
+{% endblock %}
+
+{% block pageHeader %}کتاب جدید{% endblock %}
+{% block content %}
+
+<form action="{{ path('admin_create') }}" method="post" class="form-inline" {{ form_enctype(form) }}>
+    <header id="newPost" class="row">
+        <div class="col-sm-12">
+        {{ form_widget(form.name,{attr:{'placeholder':'نام کتاب','class':'form-control'}}) }}
+        </div>
+        <div class="col-sm-12">
+        {{ form_widget(form.author,{attr:{'placeholder':'نام نویسنده','class':'form-control'}}) }}
+        </div>
+        <div class="col-sm-3"><button class="btn btn-default" id="Modal" type="button" data-toggle="modal" data-target="#myModal">از گالری</button></div>
+        <div class="col-sm-9">
+        {{ form_widget(form.cover,{attr:{'placeholder':'کاور','class':'form-control', 'dir':'ltr' }}) }}
+        </div>
+        <div class="col-sm-3" id="file_dropbox"></div>        
+        <div class="col-sm-9">
+        {{ form_widget(form.file,{attr:{'placeholder':'فایل', 'class':'form-control', 'dir':'ltr' }}) }}
+        </div>
+        <div class="col-sm-12" id="book-category">        
+        {{ form_widget(form.categories,{attr:{'class':'form-control'}}) }}
+        </div>   
+        <div class="col-sm-12">
+        <button type="submit" id="publish-post" class="btn btn-primary">انتشار</button>
+        </div>
+    </header>
+
+    <footer id="single-footer">
+{% include 'ChakoshHomeBundle:Admin:toolbar.html.twig' %}       
+<div id="editor">
+  توضیحات &hellip;
+</div> 
+        {{ form_widget(form.content) }}
+        {{ form_rest(form) }}	
+        
+    </footer>
+</form>
+{% include "ChakoshUploadBundle:Default:Modal.html.twig" %}
+{% endblock %}
+{% block js %}
+    {{ parent() }}
+    <script src="{{ asset('js/jquery-ui.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.js') }}"></script>
+    <script src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ asset('js/chosen.jquery.js') }}"></script>
+    <script src="{{ asset('js/chosen.proto.js') }}"></script>
+    <script type="text/javascript" src="https://www.dropbox.com/static/api/2/dropins.js" id="dropboxjs" data-app-key="f6a1l599zzr117p"></script>
+    <script type="text/javascript">
+    options = {
+        success: function(files) {
+            var link = files[0].link;
+            document.getElementById('chakosh_blogbundle_booktype_file').value = link;
+        },
+        cancel: function() {
+          alert("Failed")
+        },
+        linkType: "direct",
+        multiselect: false,
+        extensions: ['.pdf', '.doc', '.docx'],
+    };
+
+    var button = Dropbox.createChooseButton(options);
+    document.getElementById("file_dropbox").appendChild(button);
+
+    $(document).ready(function(){
+        cover = function(that){
+            var name = $(that).data('file');
+            $("#chakosh_blogbundle_booktype_cover").val(name);
+            $('#myModal').modal('hide');
+        }
+        
+        inserIntoPost = function(that){
+            value = $(that).attr('data-name');
+            type = $(that).attr('data-type').toLowerCase();
+            if(type === 'jpg' || type === 'png' || type === 'gif')
+                $("#editor").append('<img src="'+value+'" />'); 
+            else if(type === 'mp3' || type === 'omg' || type === 'wmv')
+                $("#editor").append('<audio controls><source src="'+ value +'" type="audio/' + type + '">Your browser does not support the audio element.</audio>');
+            else if(type === 'flv' || type === 'wmv' || type === 'mp4')
+                $("#editor").append('<video controls><source src="'+ value +'" type="video/' + type + '">Your browser does not support the video element.</video>');                    
+            //alert(value);
+            $('#myModal').modal('hide');
+        }        
+        
+        
+        
+        
+        var current = $("#brand");
+        function spin(){
+            $('#brand').replaceWith('<i class="fa fa-refresh fa-spin navbar-brand" id="spin"></i>');
+        }
+        function brand(){
+            $('#spin').replaceWith(current);
+        }
+        $("button#loadMore").click(function(){
+            spin();
+            $.ajax({
+                url: '{{ path("ajax_show_modal") }}'
+            })
+            .done(function(data){
+                $("#filesContents").append(data);
+            })
+            .success(function(){
+                brand();
+            });
+        });
+        
+        
+    $('#editor').wysiwyg();
+    $('#publish-post').click(function(){
+        $('#chakosh_blogbundle_booktype_content').html($("#editor").html());    
+    });
+    $("#pictureBtn").click(function(){
+        $('#myModal').modal('show')                
+    });
+    
+    $('.image-popup-vertical-fit').magnificPopup({
+            type: 'image',
+            closeOnContentClick: true,
+            mainClass: 'mfp-img-mobile',
+            image: {
+                    verticalFit: true
+            }
+
+    });
+
+    $('.image-popup-fit-width').magnificPopup({
+            type: 'image',
+            closeOnContentClick: true,
+            image: {
+                    verticalFit: false
+            }
+    });
+
+    $('.image-popup-no-margins').magnificPopup({
+            type: 'image',
+            closeOnContentClick: true,
+            closeBtnInside: false,
+            fixedContentPos: true,
+            mainClass: 'mfp-no-margins mfp-with-zoom', // class to remove default margin from left and right side
+            image: {
+                    verticalFit: true
+            },
+            zoom: {
+                    enabled: true,
+                    duration: 300 // don't foget to change the duration also in CSS
+            }
+    });        
+    });      
+    </script>
+{% endblock %}

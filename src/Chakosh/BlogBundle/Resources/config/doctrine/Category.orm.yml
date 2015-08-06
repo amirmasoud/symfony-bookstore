@@ -1,0 +1,32 @@
+Chakosh\BlogBundle\Entity\Category:  
+    type: entity
+    table: null
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        name:
+            type: string
+            length: 255
+        relationship:
+            type: string
+            length: 255
+        type:    
+            type: string
+            length: 255
+    manyToMany:
+      books:
+        targetEntity: Book
+        inversedBy: categories
+        joinTable:
+          name: taxonomy
+          joinColumns:
+            category_id:
+              referencedColumnName: id
+          inverseJoinColumns:
+            book_id:
+              referencedColumnName: id              
+              nullable: false
+    lifecycleCallbacks: {  }

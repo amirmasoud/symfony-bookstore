@@ -1,0 +1,26 @@
+html
+{
+	direction: rtl;
+}
+body {
+  padding-bottom: 40px;
+  background-color: #eee;
+}
+blockquote.pull-right
+{
+
+	border-right: 5px solid #B9B9B9;
+}
+/*for sticky footer*/
+.container:first-child
+{
+	min-height: 100%;
+}
+#footer
+{
+	height: 40px;
+}
+.alert-warning
+{
+	margin-top: -13px;
+}

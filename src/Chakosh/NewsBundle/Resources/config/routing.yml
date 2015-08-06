@@ -1,0 +1,17 @@
+chakoshNewsBunde_blog:
+    resource: "@ChakoshNewsBundle/Resources/config/routing/post.yml"
+    prefix:   /blog2/
+    #not working!
+
+chakoshNewsBunde_tag:
+    resource: "@ChakoshNewsBundle/Resources/config/routing/Tag.yml"
+    prefix:   /tag/
+
+chakoshNewsBunde_postcategory:
+    resource: "@ChakoshNewsBundle/Resources/config/routing/postcategory.yml"
+    prefix:   /blog-cat/
+
+blog:
+    pattern:  /blog/
+    defaults: { _controller: "ChakoshNewsBundle:Post:indexBlog" }
+    

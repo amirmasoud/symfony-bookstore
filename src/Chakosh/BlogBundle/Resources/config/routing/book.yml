@@ -1,0 +1,38 @@
+_home:
+    pattern:  /
+    defaults: { _controller: "ChakoshBlogBundle:Book:index" }
+
+_show:
+    pattern:  /b/{id}
+    defaults: { _controller: "ChakoshBlogBundle:Book:show" }
+    
+admin_home:
+    pattern:  /admin/
+    defaults: { _controller: "ChakoshBlogBundle:Book:indexAdmin" }
+
+admin_show:
+    pattern:  /admin/{id}
+    defaults: { _controller: "ChakoshBlogBundle:Book:show" }    
+
+admin_new:
+    pattern:  /admin/new/
+    defaults: { _controller: "ChakoshBlogBundle:Book:new" }
+
+admin_create:
+    pattern:  /admin/create/
+    defaults: { _controller: "ChakoshBlogBundle:Book:create" }
+    requirements: { _method: post }
+
+admin_edit:
+    pattern:  /admin/{id}/edit
+    defaults: { _controller: "ChakoshBlogBundle:Book:edit" }
+
+admin_update:
+    pattern:  /admin/{id}/update
+    defaults: { _controller: "ChakoshBlogBundle:Book:update" }
+    requirements: { _method: post|put }
+
+admin_delete:
+    pattern:  /admin/{id}/delete
+    defaults: { _controller: "ChakoshBlogBundle:Book:delete" }
+    requirements: { _method: post|delete }

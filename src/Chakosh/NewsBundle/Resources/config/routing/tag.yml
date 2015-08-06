@@ -1,0 +1,30 @@
+tag:
+    pattern:  /
+    defaults: { _controller: "ChakoshNewsBundle:Tag:index" }
+
+tag_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "ChakoshNewsBundle:Tag:show" }
+
+tag_new:
+    pattern:  /new
+    defaults: { _controller: "ChakoshNewsBundle:Tag:new" }
+
+tag_create:
+    pattern:  /create
+    defaults: { _controller: "ChakoshNewsBundle:Tag:create" }
+    requirements: { _method: post }
+
+tag_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "ChakoshNewsBundle:Tag:edit" }
+
+tag_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "ChakoshNewsBundle:Tag:update" }
+    requirements: { _method: post|put }
+
+tag_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "ChakoshNewsBundle:Tag:delete" }
+    requirements: { _method: post|delete }

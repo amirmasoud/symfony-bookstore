@@ -1,0 +1,39 @@
+{% block style %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/jquery-ui.css') }}" />        
+{% endblock %}
+{% block js %}
+<script src="{{ asset('js/jquery-ui.js') }}"></script>
+<script type="text/javascript">
+    //$(document).ready(function() {
+        /* attach a submit handler to the form */
+        //$("#searchform").submit(function(event) {
+
+          //$("#loading").fadeIn("slow");
+
+          /* stop form from submitting normally */
+          //event.preventDefault();
+
+          /* get some values from elements on the page: */
+          //var $form = $( this ),
+          //    term = $form.find( '#search' ).val(),
+          //    url = $form.attr( 'action' );
+
+          /* Send the data using post */
+          //var posting = $.post( url, { q: term } );
+
+          /* Put the results in a div */
+          //posting.done(function( data ) {
+          //  $( "#content" ).empty().html( data );
+          //  $("#loading").fadeOut("slow");            
+          //});
+        //});
+    //});
+</script>        
+{% endblock %}
+<form id="searchform" action="{{ path('search') }}" method="get" class="navbar-form navbar-right form-inline">
+    <input type="search" id="search" name="q" class="form-control" placeholder="جستجو برای" dir="auto" />
+    <button type="submit"><span class="glyphicon glyphicon-search"></span></button>
+</form> 
+<div id="loading"><span></span></div>
+<div id="ajax">
+</div>

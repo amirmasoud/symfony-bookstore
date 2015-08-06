@@ -1,0 +1,8 @@
+chakosh_comment_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: ChakoshCommentBundle:Default:index }
+
+comment_create:
+    pattern:  /comment/create
+    defaults: { _controller: "ChakoshCommentBundle:Comment:create" }
+    requirements: { _method: post }

@@ -1,0 +1,7 @@
+parameters:
+#    chakosh_news.example.class: Chakosh\NewsBundle\Example
+
+services:
+#    chakosh_news.example:
+#        class: %chakosh_news.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

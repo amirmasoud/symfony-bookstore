@@ -1,0 +1,32 @@
+{% extends 'ChakoshHomeBundle:Admin:base.html.twig' %}
+{% block js %}
+<script type="text/javascript">
+    $(document).ready(function(){
+        function aButtonPressed(){
+            $.post('{{path('upload')}}',               
+                        //{data1: 'mydata1', data2:'mydata2'}, 
+                    function(response){
+                            if(response.code == 200){//dummy check
+                              alert('Uploaded successful :)');
+                            }
+
+            }, "json");    
+        }
+
+        $(document).ready(function() {     
+          $('#startUploading').on('click', function(){aButtonPressed();});
+        });
+    });
+</script>
+{% endblock %}
+{% block style %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/one_block.css') }}" />
+{% endblock %}
+{% block content %}
+<form action="#" method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+    {{ form_rest(form) }}
+    <button type="submit" id="startUploading" class="btn btn-primary">Upload</button>
+</form>
+{% endblock %}

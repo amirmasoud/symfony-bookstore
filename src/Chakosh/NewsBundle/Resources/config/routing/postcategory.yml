@@ -1,0 +1,30 @@
+blog-category:
+    pattern:  /
+    defaults: { _controller: "ChakoshNewsBundle:postCategory:index" }
+
+blog-category_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "ChakoshNewsBundle:postCategory:show" }
+
+blog-category_new:
+    pattern:  /new
+    defaults: { _controller: "ChakoshNewsBundle:postCategory:new" }
+
+blog-category_create:
+    pattern:  /create
+    defaults: { _controller: "ChakoshNewsBundle:postCategory:create" }
+    requirements: { _method: post }
+
+blog-category_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "ChakoshNewsBundle:postCategory:edit" }
+
+blog-category_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "ChakoshNewsBundle:postCategory:update" }
+    requirements: { _method: post|put }
+
+blog-category_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "ChakoshNewsBundle:postCategory:delete" }
+    requirements: { _method: post|delete }

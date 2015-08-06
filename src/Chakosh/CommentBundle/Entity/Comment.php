@@ -1,0 +1,221 @@
+<?php
+
+namespace Chakosh\CommentBundle\Entity;
+
+
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
+/**
+ * Comment
+ */
+class Comment
+{
+    /**
+     * @var integer
+     */
+    private $id;
+
+    /**
+     * @var string
+     */
+    private $author;
+
+    /**
+     * @var string
+     */
+    private $email;
+
+    /**
+     * @var \DateTime
+     */
+    private $date;
+
+    private $content;
+    /**
+     * @var string
+     */
+    private $ip;
+
+    /**
+     * @var boolean
+     */
+    private $approved;
+
+    /**
+     * @var integer
+     */
+    private $postId;
+
+    /**
+     * contructor
+     * set date,approved,ip
+     */
+    function __construct() {
+        $this->setDate(new \DateTime());
+        $this->setApproved(1);
+    }
+    
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    
+    public function setContent($content)
+    {
+        $this->content = $content;
+    
+        return $this;
+    }
+    
+    public function getContent()
+    {
+        return $this->content;
+    }
+    
+    
+    /**
+     * Set author
+     *
+     * @param string $author
+     * @return Comment
+     */
+    public function setAuthor($author)
+    {
+        $this->author = $author;
+    
+        return $this;
+    }
+
+    /**
+     * Get author
+     *
+     * @return string 
+     */
+    public function getAuthor()
+    {
+        return $this->author;
+    }
+
+    /**
+     * Set email
+     *
+     * @param string $email
+     * @return Comment
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+    
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string 
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     * @return Comment
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+    
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime 
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
+     * Set ip
+     *
+     * @param string $ip
+     * @return Comment
+     */
+    public function setIp($ip)
+    {
+        $this->ip = $ip;
+    
+        return $this;
+    }
+
+    /**
+     * Get ip
+     *
+     * @return string 
+     */
+    public function getIp()
+    {
+        return $this->ip;
+    }
+
+    /**
+     * Set approved
+     *
+     * @param boolean $approved
+     * @return Comment
+     */
+    public function setApproved($approved)
+    {
+        $this->approved = $approved;
+    
+        return $this;
+    }
+
+    /**
+     * Get approved
+     *
+     * @return boolean 
+     */
+    public function getApproved()
+    {
+        return $this->approved;
+    }
+
+    /**
+     * Set postId
+     *
+     * @param integer $postId
+     * @return Comment
+     */
+    public function setPostId($postId)
+    {
+        $this->postId = $postId;
+    
+        return $this;
+    }
+
+    /**
+     * Get postId
+     *
+     * @return integer 
+     */
+    public function getPostId()
+    {
+        return $this->postId;
+    }
+}

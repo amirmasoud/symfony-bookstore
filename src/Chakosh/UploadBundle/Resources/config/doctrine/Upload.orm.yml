@@ -1,0 +1,14 @@
+Chakosh\UploadBundle\Entity\Upload:
+    type: entity
+    table: null
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        path:
+            type: string
+            length: 255
+            nullable: true
+    lifecycleCallbacks: {  }

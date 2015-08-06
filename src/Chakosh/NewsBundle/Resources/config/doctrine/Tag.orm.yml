@@ -1,0 +1,26 @@
+Chakosh\NewsBundle\Entity\Tag:
+    type: entity
+    table: null
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        name:
+            type: string
+            length: 255
+    manyToMany:
+      posts:
+        targetEntity: Post
+        inversedBy: tag
+        joinTable:
+          name: post_tag
+          joinColumns:
+            tag_id:
+              referencedColumnName: id
+          inverseJoinColumns:
+            post_id:
+              referencedColumnName: id              
+              nullable: false            
+    lifecycleCallbacks: {  }

@@ -1,0 +1,81 @@
+{% extends 'ChakoshHomeBundle:Base:index.html.twig' %}
+{% block js %}
+{{ parent() }}
+<script src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+ 
+//////////////////////////////////////////////////////////////////////////////////////////////////
+	$('.image-popup-vertical-fit').magnificPopup({
+		type: 'image',
+		closeOnContentClick: true,
+		mainClass: 'mfp-img-mobile',
+		image: {
+			verticalFit: true
+		}
+		
+	});
+//////////////////////////////////////////////////////////////////////////////////////////////////
+	$('.image-popup-fit-width').magnificPopup({
+		type: 'image',
+		closeOnContentClick: true,
+		image: {
+			verticalFit: false
+		}
+	});
+
+	$('.image-popup-no-margins').magnificPopup({
+		type: 'image',
+		closeOnContentClick: true,
+		closeBtnInside: false,
+		fixedContentPos: true,
+		mainClass: 'mfp-no-margins mfp-with-zoom', // class to remove default margin from left and right side
+		image: {
+			verticalFit: true
+		},
+		zoom: {
+			enabled: true,
+			duration: 300 // don't foget to change the duration also in CSS
+		}
+	});        
+//////////////////////////////////////////////////////////////////////////////////////////////////
+    });
+</script>
+{% endblock %}
+{% block style %}
+{{ parent() }}
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/magnific-popup.css') }}" />
+{% endblock %}
+{% block content %}
+    <header>
+        <h3>{{ book.name }}</h3>
+        <h3> | </h3>
+        <h3>{{ book.author }}</h3>
+        <div id="category">
+        {% for cat in category %}
+        <a href="{{ path('category_show',{'category':cat.name}) }}">
+            <span class="label label-success">{{ cat.name }}</span>
+        </a>
+        {% else %}
+            <span class="label label-success">دسته بندی نشده</span>
+        {% endfor %}
+        </div>
+    </header>
+    <a class="image-popup-no-margins" href="{{ book.cover }}">
+        <div id="cover_image">
+            <figure id="single">
+                {% set cover = book.cover|split('/')|last %}
+                <img src="{{ [ 'uploads/',cover ] | join() | imagine_filter('my_thumb') }}" />
+                <div id="download">
+                    <a href="{{ book.file }}"><button type="submit" class="btn btn-info" />دریافت</button></a>
+                </div>
+            </figure>
+        </div>    
+    </a>
+    
+    <footer id="single-footer">        
+        <p>{{ book.content|raw }}</p>
+    </footer>
+    <div id="clr"></div>
+    {% include 'ChakoshHomeBundle:Base:comments.html.twig' with comment %}
+{% endblock %}    

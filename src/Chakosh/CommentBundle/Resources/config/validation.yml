@@ -1,0 +1,8 @@
+# src/Chakosh/CommentBundle/Resources/config/validation.yml
+Chakosh\CommentBundle\Entity\Comment:
+    properties:
+        author:
+            - Length:
+                min: 2
+                max: 255
+                minMessage: Your First name must be at least {{ limit }}.

@@ -1,0 +1,3 @@
+setting:
+    resource: "@ChakoshOptionsBundle/Resources/config/routing/options.yml"
+    prefix:   /admin/setting

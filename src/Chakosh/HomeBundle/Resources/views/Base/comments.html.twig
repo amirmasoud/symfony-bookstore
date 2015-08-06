@@ -1,0 +1,50 @@
+{% block comments %}
+<div id="comments">
+    {% for cm in comment %}
+    <div id="comment" >
+        <header id="comment-{{ cm.id }}">
+            <div id="needle" style="right: {{ random(70) }}px"></div>
+            <div id="comment-avatar" style="
+                                        transform:  rotate({{ random(10) }}deg);
+                                        -o-transform:  rotate({{ random(10) }}deg);
+                                        -ms-transform:  rotate({{ random(10) }}deg);
+                                        -moz-transform:  rotate({{ random(10) }}deg);
+                                        -webkit-transform:  rotate({{ random(10) }}deg);
+                                        ">
+                {# if gravatar_exists(cm.email) #}
+                    <!--<img src="{# gravatar(cm.email) #}" width="80" height="80" />-->
+                {# else #}
+                    <img src="{{ asset('images/avatar.png') }}" width="80" height="80" />
+                {# endif #}                
+            </div>
+            <div id="comment-author">{{ cm.author }}</div>
+            <div id="comment-date">{{ cm.date|time_ago_in_words }}</div>
+        </header>
+        <figure>
+            <div id="comment-content">{{ cm.content }}</div>
+        </figure>
+                    <div id="clr"></div>
+        <footer></footer>
+    </div>
+    {% else %}
+    <div id="comment">
+        <div id="comment-content">
+            <p style="text-align: center;padding:30px;">هنوز دیدگاهی ارسال نشده است</p>
+        </div>
+    </div>
+    {% endfor %}
+</div>    
+<div id="comment-form">
+    <form action="{{ path('comment_create',{'book-id':book.id}) }}" method="post" {{ form_enctype(comment_form) }}>
+        {{ form_errors(comment_form) }}
+        {{ form_errors(comment_form.author) }}
+        {{ form_widget(comment_form.author, { 'attr': {'class':'form-control','dir':'auto','placeholder':'اسمتان'} }) }}
+        {{ form_errors(comment_form.email) }}
+        {{ form_widget(comment_form.email, { 'attr': {'class':'form-control','dir':'ltr','placeholder':'ایمیلتان'} }) }}
+        {{ form_widget(comment_form.content, { 'attr': {'placeholder': 'دیدگاه شما','class':'form-control','rows':'5','dir':'auto'} }) }}
+        <button type="submit" class="btn btn-primary">ارسال</button>
+        {{ form_rest(comment_form) }}
+
+    </form>    
+</div>
+{% endblock %}

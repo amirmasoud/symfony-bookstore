@@ -1,0 +1,7 @@
+parameters:
+#    chakosh_security.example.class: Chakosh\SecurityBundle\Example
+
+services:
+#    chakosh_security.example:
+#        class: %chakosh_security.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

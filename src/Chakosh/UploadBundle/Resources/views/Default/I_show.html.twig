@@ -1,0 +1,111 @@
+{% block js %}
+<script src="{{ asset('js/jquery.wookmark.min.js') }}"></script>
+<script src="{{ asset('js/jquery.imagesloaded.js') }}"></script>
+<script src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+
+	$('.image-popup-vertical-fit').magnificPopup({
+		type: 'image',
+		closeOnContentClick: true,
+		mainClass: 'mfp-img-mobile',
+		image: {
+			verticalFit: true
+		}
+		
+	});
+
+	$('.image-popup-fit-width').magnificPopup({
+		type: 'image',
+		closeOnContentClick: true,
+		image: {
+			verticalFit: false
+		}
+	});
+
+	$('.image-popup-no-margins').magnificPopup({
+		type: 'image',
+		closeOnContentClick: true,
+		closeBtnInside: false,
+		fixedContentPos: true,
+		mainClass: 'mfp-no-margins mfp-with-zoom', // class to remove default margin from left and right side
+		image: {
+			verticalFit: true
+		},
+		zoom: {
+			enabled: true,
+			duration: 300 // don't foget to change the duration also in CSS
+		}
+	});
+
+        $('#tiles').imagesLoaded(function() {
+        // Prepare layout options.
+        var options = {
+          autoResize: true, // This will auto-update the layout when the browser window is resized.
+          container: $('#main'), // Optional, used for some extra CSS styling
+          offset: 5, // Optional, the distance between grid items
+          outerOffset: 10, // Optional, the distance to the containers border
+          //itemWidth: 310 // Optional, the width of a grid item
+        };
+
+        // Get a reference to your grid items.
+        var handler = $('#tiles li');
+
+        // Call the layout function.
+        handler.wookmark(options);
+      });
+    });
+</script>
+{% endblock %}
+{% block style %}
+<link rel="stylesheet" type="text/css" href="{{ asset('css/magnific-popup.css') }}" />
+<style>
+#tiles {
+  list-style-type: none;
+  position: relative; /** Needed to ensure items are laid out relative to this container **/
+  margin: 0;
+  padding: 0;
+}
+
+/**
+ * Grid items
+ */
+#tiles li {
+  width: 110px;
+  background-color: #ffffff;
+  border: 1px solid #dedede;
+          border-radius: 2px;
+     -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+ /* display: none; * Hide items initially to avoid a flicker effect **/
+  cursor: pointer;
+  padding: 4px;
+}
+
+#tiles li.inactive {
+  visibility: hidden;
+  opacity: 0;
+}
+
+#tiles li img {
+  display: block;
+}
+    
+</style>
+{% endblock %}
+{% block content %}
+  <div id="main" role="main">
+
+      <ul id="tiles">
+      	{% for file in files %}
+          <li>
+              <a class="image-popup-no-margins" href="{{ ['../uploads/',file ] | join() }}">
+                  <img src="{{ ['uploads/',file ] | join() | imagine_filter('small') }}" />
+              </a>
+          </li>
+      	{% endfor %}
+      </ul>
+      
+  </div>
+
+{% endblock %}
